@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://localhost:8000" href="hello.jnlp">
+    <information>
+        <title>Localhost JNLP Test</title>
+        <vendor>Self</vendor>
+    </information>
+    <resources>
+        <j2se version="1.8+" />
+        <jar href="hello.jar" />
+    </resources>
+    <application-desc main-class="hello" />
+</jnlp>
