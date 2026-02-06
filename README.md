@@ -19,6 +19,11 @@ It is particularly suitable for running applications that use old, unsigned JARs
 *   **Bypassing Signature Checks (Primary Reason)**
     OpenWebStart and Java Web Start have strict security policies that often block old, unsigned KVM applications. This tool downloads the JARs locally and executes them as a **"local command executed by the user's intent"**, effectively bypassing signature checks and sandbox restrictions.
 
+## 🛡️ Security Considerations
+
+*   **Sandbox Bypass**: This tool intentionally bypasses Java's sandbox and signature checks to ensure compatibility with legacy hardware. The application will run with the same privileges as the user executing the script.
+*   **Trustworthiness**: Only execute `.jnlp` files from trusted sources (e.g., your own KVM switches). Running a JNLP file from an untrusted source may allow malicious code to access your local file system.
+
 ## 📋 Requirements
 
 ### Confirmed KVM Switches
