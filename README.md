@@ -1,12 +1,10 @@
-# Easy JNLP Runner
-
-- **Ver.20260206**
+# 🚀 Easy JNLP Runner
 
 A Python script to launch Java Web Start (`.jnlp`) files in modern Linux, macOS, and Windows environments. It was created to solve compatibility issues with Java Web Start (`javaws`) and legacy Java applets in environments where they are no longer supported.
 
-It is particularly suitable for running applications that use old, unsigned JARs, such as the remote consoles of HP KVM switches (Avocent OEM), by bypassing security restrictions.
+It is particularly suitable for running applications that use old, unsigned JARs, such as the remote consoles of HPE KVM switches (Avocent OEM), by bypassing security restrictions.
 
-## Features
+## ✨ Features
 
 * **Auto Setup**: Parses `.jnlp` files and automatically downloads and extracts necessary JAR files and native libraries.
 * **Multi-OS Support**: Supports Linux, macOS, and Windows. It automatically detects the OS and loads the appropriate native libraries.
@@ -16,12 +14,12 @@ It is particularly suitable for running applications that use old, unsigned JARs
     * **Windows**: Runs smoothly in standard Python + Java environments with minimal path configuration.
 * **Clean Execution**: Working files are managed in a temporary directory and automatically deleted upon exit.
 
-### Benefits of using the Python Launcher
+## 💡 Why use this over Java Web Start?
 
-**1. Unconditional execution even without signatures (Main reason)**
-OpenWebStart and Java Web Start have strict security features for web-based apps, often blocking old unsigned KVM apps. This tool downloads the JARs and calls `java` directly as a **"local command executed by the user's intent"**, bypassing signature checks and sandbox restrictions.
+*   **Bypassing Signature Checks (Primary Reason)**
+    OpenWebStart and Java Web Start have strict security policies that often block old, unsigned KVM applications. This tool downloads the JARs locally and executes them as a **"local command executed by the user's intent"**, effectively bypassing signature checks and sandbox restrictions.
 
-## Requirements
+## 📋 Requirements
 
 ### Confirmed KVM Switches
 
@@ -36,12 +34,12 @@ OpenWebStart and Java Web Start have strict security features for web-based apps
 
 ### macOS
 * **OS**: macOS Monterey or later (Intel / Apple Silicon)
-    * Runs on Apple Silicon (M1/M2/M3) via Rosetta 2.
+    * **Apple Silicon Support**: Runs natively (arm64) with an ARM-native JRE. However, if the JNLP application requires legacy Intel-only native libraries (common in old KVM consoles), you must use an x86_64 JRE via **Rosetta 2** for compatibility.
 * **Java**: **Java 8 or 11 (OpenJDK)**
     * Confirmed: OpenJDK 11 (Eclipse Temurin 11)
     * Homebrew installation: `brew install --cask temurin` (Latest LTS) or `brew install --cask temurin8`
 
-## Usage
+## 🚀 Usage
 
 1. Download `session_launch.jnlp` (or `video.jnlp`, etc.) from the KVM switch Web UI.
 2. Run the script with the downloaded `.jnlp` file as an argument.
@@ -59,7 +57,7 @@ python3 easy-jnlp-runner.py session_launch.jnlp
 ```
 The `--fix-ui` option is not needed on macOS (automatically ignored).
 
-### Options
+### ⚙️ Options
 
 | Option | Description |
 | :--- | :--- |
@@ -71,7 +69,7 @@ The `--fix-ui` option is not needed on macOS (automatically ignored).
 | `--debug` | Debug mode. Keeps temporary files and checks native library dependencies (`ldd`, etc.). |
 | `--diagnose` | Diagnosis mode. Forces a thread dump and exits after 15 seconds. |
 
-## Testing with Sample JAR
+## 🛠️ Testing with Sample JAR
 
 You can test the script using the `sample_jar` provided in the repository. Since no binaries are included, you need to compile them first.
 
@@ -87,7 +85,7 @@ compile.bat   # Windows
 JNLP files usually load JAR files over the network. Expose the `sample_jar` directory as an HTTP server for testing. (Note: The included `hello.jnlp` is configured to fetch files from `http://localhost:8000`)
 
 ```bash
-# Terminal 1 (Run inside sample_jar)
+# Terminal A (Run inside sample_jar)
 python3 -m http.server 8000
 ```
 
@@ -95,13 +93,13 @@ python3 -m http.server 8000
 Open another terminal and run the following command from the repository root.
 
 ```bash
-# Terminal 2 (Run in root directory)
+# Terminal B (Run in root directory)
 python3 easy-jnlp-runner.py sample_jar/hello.jnlp
 ```
 
 If successful, `hello.jar` will be downloaded to a temporary directory, and a Java dialog box ("hello from easy-jnlp-runner!") will appear.
 
-## Troubleshooting
+## ❓ Troubleshooting
 
 ### Q. [Linux] The screen doesn't appear or freezes gray after launch
 **A.** Might be an issue with GNOME, Wayland, or smart card drivers. Try:
@@ -117,9 +115,9 @@ If successful, `hello.jar` will be downloaded to a temporary directory, and a Ja
 ### Q. "Access Denied"
 **A.** The authentication token in the JNLP file has expired. Download a new JNLP file from the KVM Web UI and run it immediately.
 
-## License
+## 📄 License
 
 [MIT License](LICENSE)
 
-## Author
+## 👤 Author
 Masahiko OHKUBO (https://github.com/mah-jp)
