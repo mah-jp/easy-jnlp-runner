@@ -1,3 +1,5 @@
+[ Languages: [English](README.md) | **日本語** (Japanese) ]
+
 # 🚀 Easy JNLP Runner
 
 Java Web Start (`.jnlp`) ファイルを、モダンな Linux / macOS / Windows 環境で起動するためのPythonスクリプトです。Java Web Start (`javaws`) が利用できない環境や、古いJavaアプレットの互換性問題を解決するために作成されました。

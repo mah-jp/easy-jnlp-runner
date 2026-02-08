@@ -1,3 +1,5 @@
+[ Languages: **English** | [日本語](README.ja.md) (Japanese) ]
+
 # 🚀 Easy JNLP Runner
 
 A Python script to launch Java Web Start (`.jnlp`) files in modern Linux, macOS, and Windows environments. It was created to solve compatibility issues with Java Web Start (`javaws`) and legacy Java applets in environments where they are no longer supported.
